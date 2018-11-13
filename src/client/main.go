@@ -6,7 +6,7 @@ import (
 "golang.org/x/net/context"
 "google.golang.org/grpc"
 
-"github.com/s900274/grpc-practice/src/pb"
+"github.com/s900274/grpc-practice/src/proto"
 )
 
 func main() {
@@ -18,10 +18,10 @@ func main() {
 	defer conn.Close()
 
 	// 建立新的 Calculator 客戶端，所以等一下就能夠使用 Calculator 的所有方法。
-	c := pb.NewCalculatorClient(conn)
+	c := proto.NewCalculatorClient(conn)
 
 	// 傳送新請求到遠端 gRPC 伺服器 Calculator 中，並呼叫 Plus 函式，讓兩個數字相加。
-	r, err := c.Plus(context.Background(), &pb.CalcRequest{NumberA: 32, NumberB: 32})
+	r, err := c.Plus(context.Background(), &proto.CalcRequest{NumberA: 32, NumberB: 32})
 	if err != nil {
 		log.Fatalf("無法執行 Plus 函式：%v", err)
 	}

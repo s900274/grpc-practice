@@ -8,20 +8,20 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	"github.com/s900274/grpc-practice/src/pb"
+	"github.com/s900274/grpc-practice/src/proto"
 )
 
 // server 建構體會實作 Calculator 的 gRPC 伺服器。
 type server struct{}
 
 // Plus 會將傳入的數字加總。
-func (s *server) Plus(ctx context.Context, in *pb.CalcRequest) (*pb.CalcReply, error) {
+func (s *server) Plus(ctx context.Context, in *proto.CalcRequest) (*proto.CalcReply, error) {
 
 	// 計算傳入的數字。
-	result := in.NumberA + in.NumberB
+	result := in.NumberA * in.NumberB
 
 	// 包裝成 Protobuf 建構體並回傳。
-	return &pb.CalcReply{Result: result}, nil
+	return &proto.CalcReply{Result: result}, nil
 }
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 
 	// 建立新 gRPC 伺服器並註冊 Calculator 服務。
 	s := grpc.NewServer()
-	pb.RegisterCalculatorServer(s, &server{})
+	proto.RegisterCalculatorServer(s, &server{})
 
 	// 在 gRPC 伺服器上註冊反射服務。
 	reflection.Register(s)
