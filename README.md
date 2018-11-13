@@ -2,7 +2,9 @@
 
 ## Requirements
 
-Use Go 1.11 with Gomodule
+OS Version : MacOS
+
+Go Version : 1.11 (with GoModule)
 
 ## Get started
 
