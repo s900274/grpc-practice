@@ -1,12 +1,12 @@
 package main
 
 import (
-	"log"
+"log"
 
-	"golang.org/x/net/context"
-	"google.golang.org/grpc"
+"golang.org/x/net/context"
+"google.golang.org/grpc"
 
-	"github.com/s900274/grpc-practice/src/pb"
+"github.com/s900274/grpc-practice/src/pb"
 )
 
 func main() {
